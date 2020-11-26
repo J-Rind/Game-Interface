@@ -42,6 +42,8 @@ public class Game {
     // Startup functions
     private void startGame() {
         printStartupMessages();
+        // TODO: Init the pieces
+        // TODO: Render the board
         state = GameState.MENU;
     }
 
