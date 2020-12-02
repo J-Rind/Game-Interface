@@ -3,8 +3,12 @@ package com.company;
 import java.util.Scanner;
 
 public class Game {
+    // Top level variables
     private GameState state;
-    private boolean isRunning = false;
+    private Player playerWhite;
+    private Player playerBlack;
+
+    private Scanner scanner = new Scanner(System.in);
 
     public Game() {
         this.state = GameState.STARTING;
@@ -15,21 +19,23 @@ public class Game {
     }
 
     private void startGameLoop() {
-        isRunning = true;
         do {
-            playGame();
-        } while(isRunning);
+            startGame();
+        } while (state != GameState.STOPPED);
     }
 
-    private void playGame() {
+    private void startGame() {
         switch (state) {
             case STARTING:
-                startGame();
+                initializeGame();
                 break;
             case MENU:
                 handleMenuState();
                 break;
             case PLAYING:
+                // 1. Print board
+                // 2. Accept input
+                // 3. Handle input
                 break;
             case STOPPED:
                 stopGame();
@@ -40,10 +46,8 @@ public class Game {
     }
 
     // Startup functions
-    private void startGame() {
+    private void initializeGame() {
         printStartupMessages();
-        // TODO: Init the pieces
-        // TODO: Render the board
         state = GameState.MENU;
     }
 
@@ -65,15 +69,22 @@ public class Game {
 
     private int getMenuChoice() {
         System.out.print("Please select a menu option (1-2): ");
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
-        scanner.close();
-        return choice;
+        String input = scanner.nextLine();
+        return parseInputMenuChoice(input);
+    }
+
+    private int parseInputMenuChoice(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException ex) {
+            return -1;
+        }
     }
 
     private void handleChoice(int choice) {
         switch (choice) {
             case 1:
+                startPlayingGame();
                 break;
             case 2:
                 stopGame();
@@ -88,13 +99,40 @@ public class Game {
         System.out.println("Invalid menu option entered!");
     }
 
+    // Playing functions
+    private void startPlayingGame() {
+        initializePlayers();
+        welcomePlayers();
+        state = GameState.PLAYING;
+
+        System.out.println("Beginning play state (control+c to stop)");
+    }
+
+    private void initializePlayers() {
+        System.out.println("Player 1, please enter your name:");
+        String playerWhiteName = getPlayerName();
+        this.playerWhite = new Player(true, playerWhiteName);
+        
+        System.out.println("Player 2, please enter your name:");
+        String playerBlackName = getPlayerName();
+        this.playerBlack = new Player(false, playerBlackName);
+    }
+
+    private void welcomePlayers() {
+        System.out.println("Welcome " + playerWhite.getName() + " and " + playerBlack.getName() + "!");
+    }
+
+    private String getPlayerName() {
+        return scanner.nextLine();
+    }
+
     // Stop functions
     private void stopGame() {
         printStopMessages();
-        isRunning = false;
+        scanner.close();
+        state = GameState.STOPPED;
     }
 
-    
     private void printStopMessages() {
         System.out.println("--- Thank you for playing! ---");
     }
