@@ -66,8 +66,9 @@ public class Game {
     }
 
     private void printMenuOptions() {
-        System.out.println("1. Start Game");
-        System.out.println("2. Exit");
+        System.out.println("1. New Game");
+        System.out.println("2. Load Game");
+        System.out.println("3. Exit");
     }
 
     private int getMenuChoice() {
@@ -87,9 +88,12 @@ public class Game {
     private void handleChoice(int choice) {
         switch (choice) {
             case 1:
-                startPlayingGame();
+                newGame();
                 break;
             case 2:
+                loadGame();
+                break;
+            case 3:
                 stopGame();
                 break;
             default:
@@ -112,6 +116,7 @@ public class Game {
     }
 
     private void initializePlayers() {
+        // TODO: Create new players or load from a file
         System.out.println("Player 1, please enter your name:");
         String playerWhiteName = getPlayerName();
         this.playerWhite = new Player(true, playerWhiteName);
@@ -127,6 +132,16 @@ public class Game {
 
     private String getPlayerName() {
         return scanner.nextLine();
+    }
+
+    // New game
+    private void newGame() {
+        startPlayingGame();
+    }
+
+    // Load game
+    private void loadGame() {
+        System.out.println("This loads the game");
     }
 
     // Stop functions
