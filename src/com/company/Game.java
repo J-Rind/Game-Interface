@@ -166,7 +166,7 @@ public class Game {
         King whiteplayerking = new King(0, 0, "King", true);
         King blackplayerking = new King(0, 0, "King", true);
 
-        // Loop to get current position of kings
+        // Loop to get current position of kings s
         for(Square[] p : mBoard.squares) {
             for(int i = 0; i < 8; i++){
                 try {
