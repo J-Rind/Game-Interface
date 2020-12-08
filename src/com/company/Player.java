@@ -58,8 +58,3 @@ public class Player {
     }
 
 }
-
-// get info from user
-// validate input
-// game over, check or checkmate : status, datatype isinchek isincheckmate
-// error handling

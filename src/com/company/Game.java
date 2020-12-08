@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.Scanner;
 
+
 public class Game {
     // Top level variables
     private GameState state;
@@ -34,6 +35,7 @@ public class Game {
                 break;
             case PLAYING:
                 // 1. Print board
+                ManuelsArea();
                 // 2. Accept input
                 // 3. Handle input
                 break;
@@ -135,5 +137,22 @@ public class Game {
 
     private void printStopMessages() {
         System.out.println("--- Thank you for playing! ---");
+    }
+
+    private void ManuelsArea(){
+        int turn = 0;
+        while(!playerWhite.isWon() && !playerBlack.isWon()){
+            // If turn is even, white's turn.
+            if(turn % 2 == 0){
+                System.out.println("white: " + turn);
+            }
+            else{
+                System.out.println("Black: " + turn);
+            }
+
+            if(turn == 10)
+                playerWhite.setWon(true);
+            turn++;
+        }
     }
 }
