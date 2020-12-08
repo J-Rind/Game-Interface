@@ -157,7 +157,7 @@ public class Game {
                 try {
                     if(p[i].getPiece().getType().contains("King") && p[i].getPiece().getColor())
                         whiteplayerking = (King) p[i].getPiece();
-                    else if(p[i].getPiece().getType().contains("King") && p[i].getPiece().getColor())
+                    else if(p[i].getPiece().getType().contains("King") && !(p[i].getPiece().getColor()))
                         blackplayerking = (King) p[i].getPiece();
 
                 
