@@ -1,73 +1,100 @@
 package com.company;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
-public class Main {
+public class Main { 
     public static void main(String[] args) {
-        // Game game = new Game();
-        // game.start();
-
-        ArrayList<Piece> currentPieces = new ArrayList<Piece>();
-
-        ArrayList<Piece> playerPieces = new ArrayList<Piece>();
+        Game game = new Game();
+        game.start();
 
 
-        
+        // Main is just for testing
+        // I will update to gameLoop() at Game.java
 
-        Piece myPiece = new Piece();
+        // ArrayList<Piece> currentPieces = new ArrayList<Piece>();
+        // ArrayList<Piece> playerPieces = new ArrayList<Piece>();
+        // Player whiteplyr = new Player(true, "whiteplayer");
+        // Player blackplyr = new Player(false, "blackplayer");
+        // Board mBoard = new Board();
+        // Piece myPiece = new Piece();
+        // Input whitePlayerInput = new Input(whiteplyr);
+        // Input blackPlayerInput = new Input(blackplyr);
 
+        // playerPieces.addAll(mBoard.blackPiece);
+        // playerPieces.addAll(mBoard.whitePiece);
 
-        Player whiteplyr = new Player(true, "cyrone");
-        Player blackplyr = new Player(false, "cyrus");
-        Board mBoard = new Board();
+        // System.out.println(playerPieces.size());
 
+        // currentPieces = mBoard.showBoard();
+        // // whiteplayerking to keep track of the king
+        // King whiteplayerking = new King(0, 0, "King", true);
+        // King blackplayerking = new King(0, 0, "King", true);
 
-        currentPieces = mBoard.showBoard();
+        // // Loop to get current position of king 
+        // for(Square[] p : mBoard.squares) {
+        //     for(int i = 0; i < 8; i++){
+        //         try {
+        //             if(p[i].getPiece().getType().contains("King") && p[i].getPiece().getColor())
+        //                 whiteplayerking = (King) p[i].getPiece();
+        //             else if(p[i].getPiece().getType().contains("King") && p[i].getPiece().getColor())
+        //                 blackplayerking = (King) p[i].getPiece();
 
-        playerPieces.addAll(mBoard.blackPiece);
-        playerPieces.addAll(mBoard.whitePiece);
+                
+        //         } catch (Exception e) {
+        //             //System.out.println("test");
+        //         }
+                
+        //     }
 
-        System.out.println(playerPieces.size());
-        // System.out.println(currentPieces.get(0));
-        // currentPieces.get(0).getRange();
-
-        // mBoard.blackPiece.get(8).print();
-        // mBoard.blackPiece.get(1).print();
-        // mBoard.blackPiece.get(2).print();
-        // mBoard.whitePiece.get(0).print();
-        // System.out.println(mBoard.whitePiece.get(1).getName());
-
-        
-        
-        mBoard.setPieceOnSquare(mBoard.blackPiece.get(8), 4, 4);
-        mBoard.blackPiece.get(8).setX(4);
-        mBoard.blackPiece.get(8).setY(4);
-        mBoard.removePieceOnSpace(0, 1);
-
-        mBoard.squares[1][0].getPiece().print();
-
-        currentPieces = mBoard.showBoard();
-
-        
-        myPiece = playerPieces.get(0);
-
-        myPiece.getRange(playerPieces);
-        //currentPieces.get(0).print();
-        myPiece.print();
-        System.out.println(myPiece.range.size());
-
-
-
-
-       // System.out.println(mBoard.squares[0][0].getPiece().getName());
-        //Rook rookTest = new Rook(0, 0, "Rook", false);
-        
-        //System.out.println(mBoard.squares[0][0].getPiece().range.get(0));
-        // for(Piece p : mBoard.blackPiece){
-        //     System.out.println(p);
         // }
-       
-        //System.out.println(mBoard.blackPiece.get(0).range.size());
+
+
+        //blackPlayerInput.getInput(playerPieces,mBoard,blackplayerking);
+
+        //System.out.println(playerInput);
+
+        /*
+        for(Square[] p : mBoard.squares) {
+            for(int i = 0; i < 8; i++){
+                try {
+                    if(p[i].getPiece().getType().contains("Rook") && (p[i].getPiece().getColor()== true))
+                        myPiece = (Rook) p[i].getPiece();
+                        break;
+                
+                } catch (Exception e) {
+                    //System.out.println("test");
+                }
+                
+            }
+
+        }
+        myPiece.print();
+        myPiece.getRange(playerPieces);
+        for (int[] coordinate : myPiece.range) {
+            System.out.println(coordinate[0] + " " + coordinate[1]);
+        }
+        */
+
+        // String playerInput = whitePlayerInput.getInput(playerPieces,mBoard,whiteplayerking);
+
+        // System.out.println(playerInput);
+        // whitePlayerInput.updateBoard(playerPieces, mBoard, whiteplayerking);
+
+        // currentPieces = mBoard.showBoard();
+        // myPiece = mBoard.squares[6][0].getPiece();
+        // myPiece.print();
+
+        // playerInput = whitePlayerInput.getInput(playerPieces,mBoard,whiteplayerking);
+
+        // System.out.println(playerInput);
+        // whitePlayerInput.updateBoard(playerPieces, mBoard, whiteplayerking);
+
+        // currentPieces = mBoard.showBoard();
+        // myPiece = mBoard.squares[6][0].getPiece();
+        // myPiece.print();
+
+
+
 
 
         // int turn = 0;

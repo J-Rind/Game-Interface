@@ -1,19 +1,18 @@
 package com.company;
-
 import java.util.ArrayList;
 
+
 public class Queen extends Piece {
+
+
     public Queen(int x, int y, String t, Boolean white) {
         super(x, y, t, white);
     }
-    //private int X;
-    //private int Y;
-    private ArrayList<int[]> range = new ArrayList<>();
 
-    // Added Queen constructor
-    public Queen(){}
-
+    @Override
     public void getRange(ArrayList<Piece> arr){
+        this.range.clear();
+
         for (int x = this.getX() + 1, y = this.getY(); x < 8; x++) {
             if (getPiece(x,y, arr) == 0) {
                 range.add(new int[] {x,y});
@@ -114,5 +113,4 @@ public class Queen extends Piece {
             }
         }
     }
-
 }

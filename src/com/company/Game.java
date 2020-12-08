@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -35,7 +36,7 @@ public class Game {
                 break;
             case PLAYING:
                 // 1. Print board
-                ManuelsArea();
+                gameLoop();
                 // 2. Accept input
                 // 3. Handle input
                 break;
@@ -139,20 +140,56 @@ public class Game {
         System.out.println("--- Thank you for playing! ---");
     }
 
-    private void ManuelsArea(){
+    private void gameLoop(){
         int turn = 0;
+        ArrayList<Piece> currentPieces = new ArrayList<Piece>();
+        ArrayList<Piece> playerPieces = new ArrayList<Piece>();
+        Board mBoard = new Board();
+        Input whitePlayerInput = new Input(this.playerWhite);
+        Input blackPlayerInput = new Input(this.playerBlack);
+
+        King whiteplayerking = new King(0, 0, "King", true);
+        King blackplayerking = new King(0, 0, "King", true);
+
+        // Loop to get current position of kings
+        for(Square[] p : mBoard.squares) {
+            for(int i = 0; i < 8; i++){
+                try {
+                    if(p[i].getPiece().getType().contains("King") && p[i].getPiece().getColor())
+                        whiteplayerking = (King) p[i].getPiece();
+                    else if(p[i].getPiece().getType().contains("King") && p[i].getPiece().getColor())
+                        blackplayerking = (King) p[i].getPiece();
+
+                
+                } catch (Exception e) {
+                    //System.out.println("test");
+                }
+                
+            }
+
+        }
+        playerPieces.addAll(mBoard.blackPiece);
+        playerPieces.addAll(mBoard.whitePiece);
+
+
         while(!playerWhite.isWon() && !playerBlack.isWon()){
+            // Prints the board
+            currentPieces = mBoard.showBoard();
             // If turn is even, white's turn.
             if(turn % 2 == 0){
-                System.out.println("white: " + turn);
+                whitePlayerInput.getInput(playerPieces,mBoard,whiteplayerking);
+                whitePlayerInput.updateBoard(playerPieces, mBoard, whiteplayerking);
             }
             else{
-                System.out.println("Black: " + turn);
+                blackPlayerInput.getInput(playerPieces,mBoard,blackplayerking);
+                blackPlayerInput.updateBoard(playerPieces, mBoard, whiteplayerking);
+
             }
 
             if(turn == 10)
                 playerWhite.setWon(true);
             turn++;
         }
+        state = GameState.STOPPED;
     }
 }

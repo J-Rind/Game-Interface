@@ -41,7 +41,8 @@ public class Board {
                     break;
                 case 1:
                     //setting front row for black side
-                    setFront(x, blackPiece, "B");
+                    //setFront(x, blackPiece, "B");
+                    setBlanks(x);
                     break;
                 case 2:
                     //setting blank rows ↓
@@ -59,7 +60,8 @@ public class Board {
                     break;
                 case 6:
                     //setting front row for white side
-                    setFront(x, whitePiece,"W");
+                    //setFront(x, whitePiece,"W");
+                    setBlanks(x);
                     break;
                 case 7:
                     //setting back row for white side
@@ -229,9 +231,5 @@ public class Board {
         //set board back to beginning
         setBoard();
     }
-
-
-
-
 
 }

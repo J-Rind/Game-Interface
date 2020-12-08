@@ -1,21 +1,18 @@
 package com.company;
 import java.util.ArrayList;
 
+
 public class Bishop extends Piece {
+
+
     public Bishop(int x, int y, String t, Boolean white) {
         super(x, y, t, white);
     }
 
-    //private int X;
-    //private int Y;
-    private ArrayList<int[]> range = new ArrayList<>();
-    //private int getPiece(int x,int y) {return 0, 1, 2}
-
-    // Added Bishop constructor
-    public Bishop(){}
-
-
+    @Override
     public void getRange(ArrayList<Piece> arr){
+        this.range.clear();
+
         for (int x = this.getX() + 1, y = this.getY() + 1; x < 8 && y < 8; x++, y++) {
             if (getPiece(x,y, arr) == 0) {
                 range.add(new int[] {x,y});
