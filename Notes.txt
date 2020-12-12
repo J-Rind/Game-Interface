@@ -1,0 +1,23 @@
+Game Interface Team
+
+What do we need to do? (May change as we progress)
+    1. Board Interface
+    2. Menu's
+    3. Move Hints
+    4. Turn Tracker
+    5. Game State
+
+1. Board Interface:
+    a. How will the board look?
+2. Menu's:
+    a. How will we ask for the next move?
+    b. Buttons
+    c. User inputs
+3. Move Hints:
+    a. Dots showing where chosen piece can move
+4. Turn Tracker:
+    a. List of moves taken by each player
+5. Game State:
+    a.
+6. Players
+    a. Save win/losses
