@@ -29,4 +29,8 @@ public class GameLoader {
     public Player getBlackPlayer() {
         return blackPlayer;
     }
+
+    public ArrayList<Piece> getPieces() {
+        return pieces;
+    }
 }
