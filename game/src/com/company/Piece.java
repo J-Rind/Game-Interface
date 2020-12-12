@@ -5,32 +5,23 @@ import java.util.ArrayList;
 public class Piece {
     private int X;
     private int Y;
-    private String type;
+    private String name;
     private Boolean isAlive;
     private Boolean isWhite;
-    // Added name variable along set/gets
-    private String name;
-
     public ArrayList<int[]> range = new ArrayList<>();
 
-    public Piece(int x, int y, String t, Boolean white)
+    Piece(int x, int y, String t, Boolean white)
     {
         X = x;
         Y = y;
-        type = t;
+        name = t;
         isAlive = Boolean.TRUE;
         isWhite = white;
         range = new ArrayList<>();
     }
 
-    public Piece() {}
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
+    Piece()
+    {}
 
     public void updateRange(ArrayList<Piece> arr){
         for(int i = 0;i < arr.size(); i++){
@@ -74,18 +65,14 @@ public class Piece {
 
     } //function should change piece coordinates after error checking*/
 
-
-
-
-    public void getRange(ArrayList<Piece> arr){} //return type tbd, function should return the current range of movement for each piece, assuming empty board
-
+    public void getRange(ArrayList<Piece> arr){};
 
     public boolean kingCheck(){return true;} //returns if this move will place the current player's king in check.
 
     public void print(){
         System.out.println("Coordinate: (" + X + "," + Y + ")");
         System.out.println("isWhite: " + isWhite);
-        System.out.println("Type: " + type);
+        System.out.println("Name: " + name);
         System.out.println("Status: " + isAlive);
 
 
@@ -110,13 +97,13 @@ public class Piece {
 
     public int getX(){return X;}
     public int getY(){return Y;}
-    public String getType(){return type;}
+    public String getName(){return name;}
     public Boolean getAlive(){return isAlive;}
     public Boolean getColor(){return isWhite;}
 
     public void setX(int x){X = x;}
     public void setY(int y){Y = y;}
-    public void setType(String tipe){type = tipe;}
+    public void setName(String t){name = t;}
     public void setIsAlive(Boolean s){isAlive = s;}
     public void setIsWhite(Boolean a){isWhite = a;}
 }

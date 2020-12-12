@@ -1,0 +1,138 @@
+
+—
+java:S1319-"uThe type of the "whitePiece" object should be an interface such as "List" rather than the implementation "ArrayList".(µËßÎþÿÿÿÿ8˜–›üä.
+^	java:S125¬"<This block of commented-out lines of code should be removed.(Æ âÿÿÿÿÿ8˜–›üä.
+W
+java:S1854ï"9Remove this useless assignment to local variable "xcord".(™Ð†ý8˜–›üä.
+Y	java:S125¦"<This block of commented-out lines of code should be removed.(±Êîš8˜–›üä.
+u
+java:S3776Ô"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(­‹È‘ûÿÿÿÿ8˜–›üä.
+W
+java:S1854¨"9Remove this useless assignment to local variable "ycord".(ÎÞÚ¢8˜–›üä.
+\
+java:S1854¬"9Remove this useless assignment to local variable "ycord".(ÿÊ›Ùÿÿÿÿÿ8˜–›üä.
+W
+java:S1854ã"9Remove this useless assignment to local variable "xcord".(¡èéÒ8˜–›üä.
+W
+java:S1854ó"9Remove this useless assignment to local variable "xcord".(Û¢¹8˜–›üä.
+\
+java:S1854 "9Remove this useless assignment to local variable "ycord".(ï«˜Çüÿÿÿÿ8˜–›üä.
+I
+java:S1948",Make "blackPiece" transient or serializable.(€Òãü8˜–›üä.
+^	java:S125²"<This block of commented-out lines of code should be removed.(®¯é®ùÿÿÿÿ8˜–›üä.
+V
+java:S1854w"9Remove this useless assignment to local variable "xcord".(•¢²’8˜–›üä.
+L
+java:S14813"*Remove this unused "xcord" local variable.(è×Þ¬ýÿÿÿÿ8˜–›üä.
+M
+java:S1481×"*Remove this unused "ycord" local variable.(æî€šøÿÿÿÿ8˜–›üä.
+W
+java:S1854ÿ"9Remove this useless assignment to local variable "ycord".(ìÄÜË8˜–›üä.
+V
+java:S1854s"9Remove this useless assignment to local variable "xcord".(õ¼æ·8˜–›üä.
+u
+java:S3776À"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(¯ùßòþÿÿÿÿ8˜–›üä.
+[	java:S106Ë"9Replace this use of System.out or System.err by a logger.(»ˆª§ýÿÿÿÿ8˜–›üä.
+L
+java:S1481o"*Remove this unused "ycord" local variable.(æî€šøÿÿÿÿ8˜–›üä.
+C	java:S131E""Add a default case to this switch.(Œ¼’ þÿÿÿÿ8˜–›üä.
+[
+java:S1854"9Remove this useless assignment to local variable "xcord".(ª†ÁŠÿÿÿÿÿ8˜–›üä.
+L
+java:S1481n"*Remove this unused "xcord" local variable.(è×Þ¬ýÿÿÿÿ8˜–›üä.
+\
+java:S1854‡"9Remove this useless assignment to local variable "ycord".(ï«˜Çüÿÿÿÿ8˜–›üä.
+\
+java:S1854“"9Remove this useless assignment to local variable "ycord".(ÿÊ›Ùÿÿÿÿÿ8˜–›üä.
+F	java:S108")Either remove or fill this block of code.(ÃÁò’8˜–›üä.
+“
+java:S1319l"qThe type of the "pieces" object should be an interface such as "List" rather than the implementation "ArrayList".(ŽèªÈýÿÿÿÿ8˜–›üä.
+f
+java:S2095Å"HUse try-with-resources or close this "XMLEncoder" in a "finally" clause.(ÿíÂš8˜–›üä.
+W
+java:S1854°"9Remove this useless assignment to local variable "ycord".(þÝ£¤8˜–›üä.
+p
+java:S3776É"RRefactor this method to reduce its Cognitive Complexity from 27 to the 15 allowed.(ö„‰Ð8˜–›üä.
+’
+java:S1319)"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(’¦—øÿÿÿÿ8˜–›üä.
+\
+java:S1854ç"9Remove this useless assignment to local variable "xcord".(ª†ÁŠÿÿÿÿÿ8˜–›üä.
+\
+java:S1854ƒ"9Remove this useless assignment to local variable "ycord".(þ­½êüÿÿÿÿ8˜–›üä.
+\
+java:S1854"9Remove this useless assignment to local variable "xcord".(†°Ážþÿÿÿÿ8˜–›üä.
+V	java:S106¡"9Replace this use of System.out or System.err by a logger.(€Û‚œ8˜–›üä.
+[	java:S106©"9Replace this use of System.out or System.err by a logger.(ªÓ¼áþÿÿÿÿ8˜–›üä.
+\
+java:S1854œ"9Remove this useless assignment to local variable "ycord".(þ­½êüÿÿÿÿ8˜–›üä.
+^	java:S125¾"<This block of commented-out lines of code should be removed.(¦¡Õ˜ýÿÿÿÿ8˜–›üä.
+W
+java:S1854Û"9Remove this useless assignment to local variable "xcord".(õ¼æ·8˜–›üä.
+\
+java:S1854‹"9Remove this useless assignment to local variable "ycord".(Äá Ðúÿÿÿÿ8˜–›üä.
+S
+java:S1481Õ"0Remove this unused "boardReader" local variable.(àÙ†±þÿÿÿÿ8˜–›üä.
+
+java:S1319!"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(´¾‘ò8˜–›üä.
+\
+java:S1854´"9Remove this useless assignment to local variable "ycord".(Áõ±éùÿÿÿÿ8˜–›üä.
+^	java:S125¾"<This block of commented-out lines of code should be removed.(Ã·ƒýüÿÿÿÿ8˜–›üä.
+k
+java:S2095Ó"HUse try-with-resources or close this "XMLDecoder" in a "finally" clause.(þ˜ªµùÿÿÿÿ8˜–›üä.
+O
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8˜–›üä.
+W
+java:S1854‹"9Remove this useless assignment to local variable "xcord".(Û¢¹8˜–›üä.
+W
+java:S1854ß"9Remove this useless assignment to local variable "xcord".(•¢²’8˜–›üä.
+W
+java:S1854—"9Remove this useless assignment to local variable "ycord".(þÝ£¤8˜–›üä.
+\
+java:S1854ë"9Remove this useless assignment to local variable "xcord".(Ì·†»ÿÿÿÿÿ8˜–›üä.
+Y	java:S125Ê"<This block of commented-out lines of code should be removed.(ÒµŸª8˜–›üä.
+[	java:S106Ù"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍþÿÿÿÿ8˜–›üä.
+Y	java:S125¸"<This block of commented-out lines of code should be removed.(çâÍç8˜–›üä.
+V
+java:S1854{"9Remove this useless assignment to local variable "xcord".(¡èéÒ8˜–›üä.
+
+java:S1319É"qThe type of the "pieces" object should be an interface such as "List" rather than the implementation "ArrayList".(ö„‰Ð8˜–›üä.
+L
+java:S14814"*Remove this unused "ycord" local variable.(æî€šøÿÿÿÿ8˜–›üä.
+?	java:S131˜""Add a default case to this switch.(ŒÂœÊ8˜–›üä.
+’
+java:S1319%"uThe type of the "blackPiece" object should be an interface such as "List" rather than the implementation "ArrayList".(ãÌË¡8˜–›üä.
+\
+java:S1854¤"9Remove this useless assignment to local variable "ycord".(Äá Ðúÿÿÿÿ8˜–›üä.
+W
+java:S1854"9Remove this useless assignment to local variable "ycord".(ÎÞÚ¢8˜–›üä.
+Y	java:S125Ñ"<This block of commented-out lines of code should be removed.(Ÿ´ƒƒ8˜–›üä.
+\
+java:S1854÷"9Remove this useless assignment to local variable "xcord".(†°Ážþÿÿÿÿ8˜–›üä.
+\
+java:S1854ƒ"9Remove this useless assignment to local variable "xcord".(Ì·†»ÿÿÿÿÿ8˜–›üä.
+M
+java:S1481Ö"*Remove this unused "xcord" local variable.(è×Þ¬ýÿÿÿÿ8˜–›üä.
+[	java:S106Ö"9Replace this use of System.out or System.err by a logger.(ªÓ¼áþÿÿÿÿ8˜–›üä.
+Y	java:S125¤"<This block of commented-out lines of code should be removed.(•µ÷ã8˜–›üä.
+\
+java:S1854›"9Remove this useless assignment to local variable "ycord".(Áõ±éùÿÿÿÿ8˜–›üä.
+t
+java:S3776l"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(ŽèªÈýÿÿÿÿ8˜–›üä.
+b
+java:S1854Õ"?Remove this useless assignment to local variable "boardReader".(àÙ†±þÿÿÿÿ8˜–›üä.
+Ž
+java:S1319–"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Ù‚Þ¡8˜–›üä.
+H
+java:S1172l"&Remove these unused method parameters.(ŽèªÈýÿÿÿÿ8˜–›üä.
+W
+java:S1854‡"9Remove this useless assignment to local variable "xcord".(™Ð†ý8˜–›üä.
+W
+java:S1854˜"9Remove this useless assignment to local variable "ycord".(ìÄÜË8˜–›üä.
+K
+java:S1125¢"(Remove the literal "true" boolean value.(Ú°´ýÿÿÿÿ8˜–›üä.
+C
+java:S1172¨"&Remove these unused method parameters.(ðÝ°88˜–›üä.
+^	java:S125"<This block of commented-out lines of code should be removed.(á´Ï¯ùÿÿÿÿ8˜–›üä.
+^	java:S125Ä"<This block of commented-out lines of code should be removed.(üã‰¼ýÿÿÿÿ8˜–›üä.
+N
+java:S1948",Make "whitePiece" transient or serializable.(±šñÁùÿÿÿÿ8˜–›üä.

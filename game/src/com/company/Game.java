@@ -72,7 +72,7 @@ public class Game {
     }
 
     private int getMenuChoice() {
-        System.out.print("Please select a menu option (1-2): ");
+        System.out.print("Please select a menu option (1-3): ");
         String input = scanner.nextLine();
         return parseInputMenuChoice(input);
     }
@@ -170,9 +170,9 @@ public class Game {
         for(Square[] p : mBoard.squares) {
             for(int i = 0; i < 8; i++){
                 try {
-                    if(p[i].getPiece().getType().contains("King") && p[i].getPiece().getColor())
+                    if(p[i].getPiece().getName().contains("King") && p[i].getPiece().getColor())
                         whiteplayerking = (King) p[i].getPiece();
-                    else if(p[i].getPiece().getType().contains("King") && !(p[i].getPiece().getColor()))
+                    else if(p[i].getPiece().getName().contains("King") && !(p[i].getPiece().getColor()))
                         blackplayerking = (King) p[i].getPiece();
 
                 

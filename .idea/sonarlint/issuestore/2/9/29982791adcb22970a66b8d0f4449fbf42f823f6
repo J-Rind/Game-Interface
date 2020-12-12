@@ -1,0 +1,11 @@
+
+i	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŒÆÑÂıÿÿÿÿ
+i	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ıÑ£ëüÿÿÿÿ
+]
+java:S2583"DChange this condition so that it does not always evaluate to "false"(Ö•øÿÿÿÿ
+k
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 44 to the 15 allowed.(ßÚÄ’ÿÿÿÿÿ
+B
+java:S1125")Remove the literal "false" boolean value.(Üºûÿÿÿÿ
+R
+java:S2251"9"y" is decremented and will never reach "stop condition".(‹èõùÿÿÿÿ

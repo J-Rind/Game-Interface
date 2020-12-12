@@ -6,6 +6,7 @@ class King extends Piece {
     public King(int x, int y, String t, Boolean white) {
         super(x, y, t, white);
     }
+
     // Params:
     // ArrayList<Piece> pieces: An ArrayList of all the pieces on the board
     // Desc:

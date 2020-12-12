@@ -17,35 +17,35 @@ public class Knight extends Piece {
         int Y = this.getY();
 
         if(getPiece(X + 1, Y + 2, arr) == 0 || getPiece(X + 1, Y + 2, arr) == 1){
-            range.add(new int[] {X,Y});
+            this.range.add(new int[] {X,Y});
         }
 
         if(getPiece(X + 2, Y + 1, arr) == 0 || getPiece(X + 2, Y + 1, arr) == 1){
-            range.add(new int[] {X,Y});
+            this.range.add(new int[] {X,Y});
         }
 
         if(getPiece(X + 2, Y - 1, arr) == 0 || getPiece(X + 2, Y - 1, arr) == 1){
-            range.add(new int[] {X,Y});
+            this.range.add(new int[] {X,Y});
         }
 
         if(getPiece(X + 1, Y - 2, arr) == 0 || getPiece(X + 1, Y - 2, arr) == 1){
-            range.add(new int[] {X,Y});
+            this.range.add(new int[] {X,Y});
         }
 
         if(getPiece(X - 1, Y - 2, arr) == 0 || getPiece(X - 1, Y - 2, arr) == 1){
-            range.add(new int[] {X,Y});
+            this.range.add(new int[] {X,Y});
         }
 
         if(getPiece(X - 2, Y - 1, arr) == 0 || getPiece(X - 2, Y - 1, arr) == 1){
-            range.add(new int[] {X,Y});
+            this.range.add(new int[] {X,Y});
         }
 
         if(getPiece(X - 2, Y + 1, arr) == 0 || getPiece(X - 2, Y + 1, arr) == 0){
-            range.add(new int[] {X,Y});
+            this.range.add(new int[] {X,Y});
         }
 
         if(getPiece(X - 1, Y + 2, arr) == 0 || getPiece(X - 1, Y + 2, arr) == 0){
-            range.add(new int[] {X,Y});
+            this.range.add(new int[] {X,Y});
         }
 
     }

@@ -1,0 +1,30 @@
+
+‰
+java:S1319"pThe type of the "range" object should be an interface such as "List" rather than the implementation "ArrayList".(Àƒß±úÿÿÿÿ
+‚
+java:S1319"nThe type of the "arr" object should be an interface such as "List" rather than the implementation "ArrayList".(æí”é
+‡
+java:S1319"nThe type of the "arr" object should be an interface such as "List" rather than the implementation "ArrayList".(·£ÚÖøÿÿÿÿ
+
+java:S1319"nThe type of the "arr" object should be an interface such as "List" rather than the implementation "ArrayList".(¿ÍG
+‡
+java:S1319"nThe type of the "arr" object should be an interface such as "List" rather than the implementation "ArrayList".(Õ‹©Úûÿÿÿÿ
+j
+java:S1104"QMake range a static final constant or non-public and provide accessors if needed.(Àƒß±úÿÿÿÿ
+R
+java:S4973"9Use the "equals" method if value comparison was intended.(â¯Ñ³øÿÿÿÿ
+”
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¿ÍG
+_	java:S116"LRename this field "X" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åØñƒ
+_	java:S116"LRename this field "Y" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆ”Ï¿
+L	java:S106"9Replace this use of System.out or System.err by a logger.(¢àÏ
+<
+java:S1125"(Remove the literal "true" boolean value.(£ï˜Â
+Q	java:S106"9Replace this use of System.out or System.err by a logger.(†„Æıÿÿÿÿ
+Q	java:S106"9Replace this use of System.out or System.err by a logger.(ç¦Äàüÿÿÿÿ
+/
+java:S1116"Remove this empty statement.(¿ÍG
+L	java:S106"9Replace this use of System.out or System.err by a logger.(ª¸š
+L	java:S106"9Replace this use of System.out or System.err by a logger.(ğ“‡»
+Q	java:S106"9Replace this use of System.out or System.err by a logger.(ë÷‹Ûÿÿÿÿÿ
+Q	java:S106"9Replace this use of System.out or System.err by a logger.(Œ”÷Šúÿÿÿÿ
