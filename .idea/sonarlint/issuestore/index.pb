@@ -25,3 +25,11 @@ P
  game/src/com/company/Square.java,c\4\c430064d7b08aec6200385c1259b8097f376ef3d
 O
 game/src/com/company/Board.java,1\1\11916d6d6cf918bf5ced374979b89cb53147227d
+9
+	test-1.md,e\8\e863bba89f03469236a586379027703480bba0be
+O
+game/src/com/company/Input.java,c\8\c86ca8e074a2eb8098b996ac9fc748ca4cb41f01
+9
+	test-2.md,1\3\13efc59ff795bceb9cca00fa55d10e39e9a09412
+=
+game/game.iml,d\e\de45cb1909230d9e82d755c37007e4c4a4873381

@@ -1,28 +1,28 @@
 
-d
-java:S1854ΐ"ARemove this useless assignment to local variable "currentPieces".(ώ Γϊÿÿÿÿ8¬γόδ.
-|
-java:S2293΅"YReplace the type specification in this constructor call with the diamond operator ("<>").(®³ΰϋÿÿÿÿ8¬γόδ.
-Z	java:S106x"9Replace this use of System.out or System.err by a logger.(Θ£’²ώÿÿÿÿ8¬γόδ.
-Z	java:S106F"9Replace this use of System.out or System.err by a logger.(½΅–Λόÿÿÿÿ8¬γόδ.
-Z	java:S106j"9Replace this use of System.out or System.err by a logger.(Ο¨§ ϋÿÿÿÿ8¬γόδ.
 _
 java:S1854 "ARemove this useless assignment to local variable "currentPieces".(¶Ήέ—8¬γόδ.
+Z	java:S106j"9Replace this use of System.out or System.err by a logger.(Ο¨§ ϋÿÿÿÿ8¬γόδ.
+Z	java:S106:"9Replace this use of System.out or System.err by a logger.(ΩΞΥέϋÿÿÿÿ8¬γόδ.
+Z	java:S106F"9Replace this use of System.out or System.err by a logger.(½΅–Λόÿÿÿÿ8¬γόδ.
+U	java:S106G"9Replace this use of System.out or System.err by a logger.(ωχΗχ8¬γόδ.
 V	java:S106›"9Replace this use of System.out or System.err by a logger.(ΝΊΕΪ8¬γόδ.
+|
+java:S2293΅"YReplace the type specification in this constructor call with the diamond operator ("<>").(®³ΰϋÿÿÿÿ8¬γόδ.
+U	java:S106K"9Replace this use of System.out or System.err by a logger.(‡ΙΎή8¬γόδ.
+d
+java:S1854ΐ"ARemove this useless assignment to local variable "currentPieces".(ώ Γϊÿÿÿÿ8¬γόδ.
 w
 java:S2293 "YReplace the type specification in this constructor call with the diamond operator ("<>").(¶Ήέ—8¬γόδ.
-U	java:S106|"9Replace this use of System.out or System.err by a logger.(Ω³8¬γόδ.
-Y	java:S125΄"<This block of commented-out lines of code should be removed.(¥¦ί8¬γόδ.
+Z	java:S106x"9Replace this use of System.out or System.err by a logger.(Θ£’²ώÿÿÿÿ8¬γόδ.
+P
+java:S1481 "2Remove this unused "currentPieces" local variable.(¶Ήέ—8¬γόδ.
 V	java:S106‚"9Replace this use of System.out or System.err by a logger.(Έÿκ·8¬γόδ.
-U	java:S106G"9Replace this use of System.out or System.err by a logger.(ωχΗχ8¬γόδ.
+Y	java:S125΄"<This block of commented-out lines of code should be removed.(¥¦ί8¬γόδ.
+U	java:S106E"9Replace this use of System.out or System.err by a logger.(ΰάσ8¬γόδ.
+U	java:S106|"9Replace this use of System.out or System.err by a logger.(Ω³8¬γόδ.
 [	java:S106"9Replace this use of System.out or System.err by a logger.(‰χ‹οϋÿÿÿÿ8¬γόδ.
+T	java:S106s"9Replace this use of System.out or System.err by a logger.(ƒέΉ8¬γόδ.
 O
 java:S1135w"2Complete the task associated to this TODO comment.(ΌΛµ8¬γόδ.
 u
 java:S3776"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(Ά¥υ‘ύÿÿÿÿ8¬γόδ.
-U	java:S106K"9Replace this use of System.out or System.err by a logger.(Λ€›Ρ8¬γόδ.
-P
-java:S1481 "2Remove this unused "currentPieces" local variable.(¶Ήέ—8¬γόδ.
-T	java:S106s"9Replace this use of System.out or System.err by a logger.(ƒέΉ8¬γόδ.
-U	java:S106E"9Replace this use of System.out or System.err by a logger.(ΰάσ8¬γόδ.
-Z	java:S106:"9Replace this use of System.out or System.err by a logger.(ΩΞΥέϋÿÿÿÿ8¬γόδ.

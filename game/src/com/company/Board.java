@@ -185,7 +185,7 @@ public class Board implements Serializable {
             }
 
             //make piece object
-            Pawn pawnPiece = new Pawn(row, y, "--" + color + "-pwn1-" + xcord + "-" + ycord + "-", isWhite);
+            Pawn pawnPiece = new Pawn(row, y, "--" + color + "-pw1-" + xcord + "-" + ycord + "-", isWhite);
             //calls function and passes piece object with coordinates
             setPieceOnSquare(pawnPiece,row,y);
             //passes color and coordinates
