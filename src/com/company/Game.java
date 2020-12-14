@@ -35,10 +35,7 @@ public class Game {
                 handleMenuState();
                 break;
             case PLAYING:
-                // 1. Print board
-                gameLoop();
-                // 2. Accept input
-                // 3. Handle input
+                runGameLoop();
                 break;
             case STOPPED:
                 stopGame();
@@ -155,54 +152,50 @@ public class Game {
         System.out.println("--- Thank you for playing! ---");
     }
 
-    private void gameLoop(){
+    private void runGameLoop(){
+        // Initialization
         int turn = 0;
         ArrayList<Piece> playerPieces = new ArrayList<Piece>();
         Board mBoard = new Board();
         Input whitePlayerInput = new Input(this.playerWhite);
         Input blackPlayerInput = new Input(this.playerBlack);
-
-        King whiteplayerking = new King(0, 0, "kg", true);
-        King blackplayerking = new King(0, 0, "kg", false);
-
-        // Loop to get current position of kings
-        for(Square[] p : mBoard.squares) {
-            for(int i = 0; i < 8; i++){
-                try {
-                    if(p[i].getPiece().getName().contains("kg") && p[i].getPiece().getColor())
-                        whiteplayerking = (King) p[i].getPiece();
-                    else if(p[i].getPiece().getName().contains("kg") && !(p[i].getPiece().getColor()))
-                        blackplayerking = (King) p[i].getPiece();
-
-                
-                } catch (Exception e) {
-                    //System.out.println("test");
-                }
-                
-            }
-
-        }
-
-
-
+        King whitePlayerKing = findKing(playerWhite, mBoard);
+        King blackPlayerKing = findKing(playerBlack, mBoard);
+        // Loops if no player has won
         while(!playerWhite.isWon() && !playerBlack.isWon()){
             // Prints the board
             playerPieces = mBoard.showBoard();
             // If turn is even, white's turn.
             if(turn % 2 == 0){
-                whitePlayerInput.getInput(playerPieces,mBoard,whiteplayerking);
-                whitePlayerInput.updateBoard(playerPieces, mBoard, whiteplayerking);
+                whitePlayerInput.getInput(playerPieces,mBoard,whitePlayerKing);
+                whitePlayerInput.updateBoard(playerPieces, mBoard, whitePlayerKing);
             }
             else{
-                blackPlayerInput.getInput(playerPieces,mBoard,blackplayerking);
-                blackPlayerInput.updateBoard(playerPieces, mBoard, blackplayerking);
+                blackPlayerInput.getInput(playerPieces,mBoard,blackPlayerKing);
+                blackPlayerInput.updateBoard(playerPieces, mBoard, blackPlayerKing);
 
             }
+            // Checkmate class goes here
+            // If black is checkmated, playerWhite.setWon(true)
+            // if white is checkmated, playerBlack.setWon(true)
 
-            if(turn == 10)
-                playerWhite.setWon(true);
             turn++;
         }
         state = GameState.STOPPED;
+    }
+    private King findKing(Player player, Board mBoard){
+        King myKing = new King(0,0,"kg",false);
+        // Loop to get current position of kings
+        for(Square[] p : mBoard.squares) {
+            for(int i = 0; i < 8; i++){
+                try {
+                    if(p[i].getPiece().getName().contains("kg") && p[i].getPiece().getColor() == player.getIsWhite())
+                        myKing = (King) p[i].getPiece();
+                } catch (Exception e) {
+                    //System.out.println("Null");
+                }   
+            }
+        }
+        return myKing;
     }
 }
