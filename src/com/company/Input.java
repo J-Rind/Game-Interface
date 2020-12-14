@@ -60,23 +60,13 @@ public class Input {
     }
 
     public boolean isValidMove(ArrayList<Piece> arr, Board board, String input, King myKing){
-        int[] inverseBoard = new int[]{7,6,5,4,3,2,1,0};
-
-        System.out.println(input);
-        int value1 = input.charAt(0) - 97;
-        int value2 = input.charAt(1) - 49;
-        int value3 = input.charAt(2) - 97;
-        int value4 = input.charAt(3) - 49;
-        System.out.println(value1+" " + value2 +" "+ value3 +" "+ value4);
-
         Boolean valid = false;
         // Initial location of the piece
-        int xCoordOne = inverseBoard[value2];
-        int yCoordOne = value1;
+        int xCoordOne = input.charAt(0) - 97;
+        int yCoordOne = input.charAt(1) - 49;
         // Final location of the piece
-        int xCoordTwo = inverseBoard[value4];
-        int yCoordTwo = value3;
-        System.out.println(xCoordOne +" "+ yCoordOne +" "+ xCoordTwo +" "+ yCoordTwo);
+        int xCoordTwo = input.charAt(2) - 97;
+        int yCoordTwo = input.charAt(3) - 49;
 
         // Finding the piece
         Piece myPiece = new Piece();
@@ -85,48 +75,67 @@ public class Input {
         myPiece.updateRange(arr);
 
         for (int[] coordinate : myPiece.range) {
-            if (coordinate[0] == xCoordTwo && coordinate[1] == yCoordTwo) {
-                if(board.squares[xCoordOne][yCoordOne].getPiece().getColor() == this.player.getIsWhite())
+            if (coordinate[0] == xCoordTwo && coordinate[1] == yCoordTwo) {     // checks if desired move is within range
+                if(board.squares[xCoordOne][yCoordOne].getPiece().getColor() == this.player.getIsWhite()) // Validates if piece belongs to player
                     valid = true;
                 else{System.out.println("Not your piece");}
                 
             }
         }
+        // temp move to update the array for kingcheck
+        myPiece.setX(xCoordTwo);
+        myPiece.setY(yCoordTwo);
+
         myPiece.updateRange(arr);
 
+        // Checks if desired move will put the king in check
         if (myKing.kingCheck(arr) == true)
         {
             System.out.println("Invalid move, king will be in check");
             valid = false;
         }
-        if(board.whitePiece.contains(piece)){
+        // Move piece back
+        myPiece.setX(xCoordOne);
+        myPiece.setY(yCoordOne);
 
-        }
-
-        if(valid == false){
-            System.out.println("move not in range");
-        }
         return valid;
     }
 
     public void updateBoard(ArrayList<Piece> arr, Board board, King myKing){
-        int[] inverseBoard = new int[]{7,6,5,4,3,2,1,0};
-        int value1 = input.charAt(0) - 97;
-        int value2 = input.charAt(1) - 49;
-        int value3 = input.charAt(2) - 97;
-        int value4 = input.charAt(3) - 49;
-
         // Initial location of the piece
-        int xCoordOne = inverseBoard[value2];
-        int yCoordOne = value1;
+        int xCoordOne = input.charAt(0) - 97;
+        int yCoordOne = input.charAt(1) - 49;
         // Final location of the piece
-        int xCoordTwo = inverseBoard[value4];
-        int yCoordTwo = value3;
+        int xCoordTwo = input.charAt(2) - 97;
+        int yCoordTwo = input.charAt(3) - 49;
 
+        // Finding the piece
         Piece myPiece = new Piece();
         myPiece = board.squares[xCoordOne][yCoordOne].getPiece();
+
+        // Changing the name of selected piece to update with moved location coordinates
+        String newName = updateName(myPiece);
+        myPiece.setName(newName);
+
+        // Moving the piece
         myPiece.moveTo(xCoordTwo, yCoordTwo, myKing, arr);
+        // Update the board with the move
         board.setPieceOnSquare(myPiece, xCoordTwo, yCoordTwo);
+        // Old location is blank
         board.removePieceOnSpace(xCoordOne, yCoordOne);
+    }
+    public String updateName(Piece myPiece){
+        char[] chararr = new char[12];
+        // --B-rk1-A-8- is the naming style
+        // To change A-8 to desired location remove the last 4 characters and update them
+        for(int i = 0; i < myPiece.getName().length()-4; i++){
+           chararr[i] = myPiece.getName().charAt(i);
+        }
+        chararr[myPiece.getName().length()-4] = (char) (input.charAt(2) - 32);
+        chararr[myPiece.getName().length()-3] = '-';
+        chararr[myPiece.getName().length()-2] = input.charAt(3);
+        chararr[myPiece.getName().length()-1] = '-';
+        String changeString = new String(chararr);
+        return changeString;
     } 
 }

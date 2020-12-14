@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Board implements Serializable {
+
     //2D array to make the 8 by 8 grid of the board
-    Square[][] squares = new Square [8][8];
+    Square [][] squares = new Square [8][8];
 
     //arraylist to store the black pieces
     ArrayList<Piece> blackPiece = new ArrayList<>();
@@ -68,36 +69,36 @@ public class Board implements Serializable {
         }
 
         //for loop to cycle through rows to establish setup of board
-        for(int x = 0; x< 8; x++){
-            //switch to establish each row
-            switch(x){
-                case 0:
+        for(int x = 7; x >=0; x--){                                              //TYANG x = should act as rows
+            //switch to establish each row                                      // Gets confused up in setting rows and etc
+            switch(x){								//Rows stay the same!
+                case 7:
                     //setting back row for black side
                     setBack(x, blackPiece,"B", false);
                     break;
-                case 1:
+                case 6:
                     //setting front row for black side
                     setFront(x, blackPiece, "B", false);
                     break;
-                case 2:
+                case 5:
                     //setting blank rows ↓
-                    setBlanks(x);
-                    break;
-                case 3:
                     setBlanks(x);
                     break;
                 case 4:
                     setBlanks(x);
                     break;
-                case 5:
+                case 3:
+                    setBlanks(x);
+                    break;
+                case 2:
                     //setting blank rows ↑
                     setBlanks(x);
                     break;
-                case 6:
+                case 1:
                     //setting front row for white side
                     setFront(x, whitePiece,"W", true);
                     break;
-                case 7:
+                case 0:
                     //setting back row for white side
                     setBack(x, whitePiece, "W", true);
                     break;
@@ -111,85 +112,88 @@ public class Board implements Serializable {
     //sets the front row of pieces
     public void setFront(int row, ArrayList<Piece> pieces, String color, Boolean isWhite){
 
-        char xcord = 0;
+        int xcord = row+1;
         char ycord = 0;
 
-        if (row == 0)
+        /*
+        if (row == 7)                                                           //TYANG Row = numbers not letters
         {
-            xcord = 'A';
-        }
-        if (row == 1)
-        {
-            xcord = 'B';
-        }
-        if (row == 2)
-        {
-            xcord = 'C';
-        }
-        if (row == 3)
-        {
-            xcord = 'D';
-        }
-        if (row == 4)
-        {
-            xcord = 'E';
-        }
-        if (row == 5)
-        {
-            xcord = 'F';
+            ycord = 7;
         }
         if (row == 6)
         {
-            xcord = 'G';
+            ycord = 6;
         }
-        if (row == 7)
+        if (row == 5)
         {
-            xcord = 'H';
+            ycord = 'C';
         }
+        if (row == 4)
+        {
+            ycord = 'D';
+        }
+        if (row == 3)
+        {
+            ycord = 'E';
+        }
+        if (row == 2)
+        {
+            ycord = 'F';
+        }
+        if (row == 1)
+        {
+            ycord = 'G';
+        }
+        if (row == 0)
+        {
+            ycord = 'H';
+        }
+         */
+
+        for(int y = 0; y <=7; y++){                                                     // TYANG increases from 0
 
 
-        for(int y = 0; y < 8; y++){
-
-
-            if (y == 0)
+            if (y == 0)                                                                 // Collumns = letters not numbers
             {
-                ycord = '8';
+                ycord = 'A';
             }
             if (y == 1)
             {
-                ycord = '7';
+                ycord = 'B';
             }
             if (y == 2)
             {
-                ycord = '6';
+                ycord = 'C';
             }
             if (y == 3)
             {
-                ycord = '5';
+                ycord = 'D';
             }
             if (y == 4)
             {
-                ycord = '4';
+                ycord = 'E';
             }
             if (y == 5)
             {
-                ycord = '3';
+                ycord = 'F';
             }
             if (y == 6)
             {
-                ycord = '2';
+                ycord = 'G';
             }
             if (y == 7)
             {
-                ycord = '1';
+                ycord = 'H';
             }
 
+
+
             //make piece object
-            Pawn pawnPiece = new Pawn(row, y, "--" + color + "-pw1-" + xcord + "-" + ycord + "-", isWhite);
+            Pawn pawnPiece = new Pawn(y, row,"--" + color + "pawn-" +  ycord + "-" + xcord + "-",isWhite);
             //calls function and passes piece object with coordinates
-            setPieceOnSquare(pawnPiece,row,y);
+            setPieceOnSquare(pawnPiece,y,row);
             //passes color and coordinates
-            //thisPiece.setName("--" + color + "pawn-" +  xcord + "-" + ycord + "-");
+            //thisPiece.setName("--" + color + "pawn-" +  ycord + "-" + xcord + "-");
             //keeps track of pieces in arraylist
             pieces.add(pawnPiece);
         }
@@ -204,10 +208,11 @@ public class Board implements Serializable {
 
 
 
+        int ycord = row+1;
         char xcord = 0;
-        char ycord = 0;
 
-        if (row == 0)
+        /*
+        if (row == 0)								//TYANG row = number
         {
             xcord = 'A';
         }
@@ -241,94 +246,96 @@ public class Board implements Serializable {
         }
 
 
+         */
+
 
         //the order of the back row is rook, knight, bishop, queen, king, bishop, knight, rook, from left to right
         //so we used a switch to build each specific piece as the for loop iterates through each square
-        for(int y = 0; y < 8; y++){
+        for(int y = 0; y <=7; y++){                                                     // TYANG increases from 0
 
-            if (y == 0)
+            if (y == 0)                                                                 // Collumns = letters not numbers
             {
-                ycord = '8';
+                xcord = 'A';
             }
             if (y == 1)
             {
-                ycord = '7';
+                xcord = 'B';
             }
             if (y == 2)
             {
-                ycord = '6';
+                xcord = 'C';
             }
             if (y == 3)
             {
-                ycord = '5';
+                xcord = 'D';
             }
             if (y == 4)
             {
-                ycord = '4';
+                xcord = 'E';
             }
             if (y == 5)
             {
-                ycord = '3';
+                xcord = 'F';
             }
             if (y == 6)
             {
-                ycord = '2';
+                xcord = 'G';
             }
             if (y == 7)
             {
-                ycord = '1';
+                xcord = 'H';
             }
 
             switch(y){
                 case 0:
                     // creates piece object
-                    Rook rookPiece = new Rook(row, y, "--" + color + "-rk1-" + xcord + "-" + ycord + "-", isWhite);
+                    Rook rookPiece = new Rook(y, row, "--" + color + "-rk1-" + xcord + "-" + ycord + "-", isWhite);
                     // calls function to set piece on the square while passing the object and coordinate
-                    setPieceOnSquare(rookPiece,row,y);
+                    setPieceOnSquare(rookPiece,y, row);
                     //keeps track of pieces in arraylist
                     pieces.add(rookPiece);
                     break;
 
                 //other cases do the same as this case, but for their respective pieces based on where they should be on the board
                 case 1:
-                    Knight knightPiece = new Knight(row, y, "--" + color + "-kn1-" + xcord + "-" + ycord + "-", isWhite);
-                    setPieceOnSquare(knightPiece,row,y);
+                    Knight knightPiece = new Knight(y, row, "--" + color + "-kn1-" + xcord + "-" + ycord + "-", isWhite);
+                    setPieceOnSquare(knightPiece,y, row);
                     //knightPiece.setName("--" + color + "-kn1-" + xcord + "-" + ycord + "-");
                     pieces.add(knightPiece);
                     break;
                 case 2:
-                    Bishop bishopPiece = new Bishop(row, y, "--" + color + "-bi1-" + xcord + "-" + ycord + "-", isWhite);
-                    setPieceOnSquare(bishopPiece,row,y);
+                    Bishop bishopPiece = new Bishop(y, row, "--" + color + "-bi1-" + xcord + "-" + ycord + "-", isWhite);
+                    setPieceOnSquare(bishopPiece,y, row);
                     //bishopPiece.setName("--" + color + "-bi1-" + xcord + "-" + ycord + "-");
                     pieces.add(bishopPiece);
                     break;
                 case 3:
-                    Queen queenPiece = new Queen(row, y, "--" + color + "-qu1-" + xcord + "-" + ycord + "-", isWhite);
-                    setPieceOnSquare(queenPiece,row,y);
+                    Queen queenPiece = new Queen(y, row, "--" + color + "-qu1-" + xcord + "-" + ycord + "-", isWhite);
+                    setPieceOnSquare(queenPiece,y, row);
                     //queenPiece.setName("--" + color + "-qu1-" + xcord + "-" + ycord + "-");
                     pieces.add(queenPiece);
                     break;
                 case 4:
-                    King kingPiece = new King(row, y, "--" + color + "-kg1-" + xcord + "-" + ycord + "-" , isWhite);
-                    setPieceOnSquare(kingPiece,row,y);
+                    King kingPiece = new King(y, row, "--" + color + "-kg1-" + xcord + "-" + ycord + "-" , isWhite);
+                    setPieceOnSquare(kingPiece,y, row);
                     //kingPiece.setName("--" + color + "-kg1-" + xcord + "-" + ycord + "-");
                     pieces.add(kingPiece);
                     break;
                 case 5:
-                    Bishop bishopPiece1 = new Bishop(row, y, "--" + color + "-bi2-" + xcord + "-" + ycord + "-", isWhite);
-                    setPieceOnSquare(bishopPiece1,row,y);
+                    Bishop bishopPiece1 = new Bishop(y, row, "--" + color + "-bi2-" + xcord + "-" + ycord + "-", isWhite);
+                    setPieceOnSquare(bishopPiece1,y, row);
                     //bishopPiece1.setName("--" + color + "-bi2-" + xcord + "-" + ycord + "-");
                     pieces.add(bishopPiece1);
                     break;
                 case 6:
-                    Knight knightPiece1 = new Knight(row, y, "--" + color + "-kn2-" + xcord + "-" + ycord + "-", isWhite);
-                    setPieceOnSquare(knightPiece1,row,y);
+                    Knight knightPiece1 = new Knight(y, row, "--" + color + "-kn2-" + xcord + "-" + ycord + "-", isWhite);
+                    setPieceOnSquare(knightPiece1,y, row);
                     //knightPiece1.setName("--" + color + "-kn2-" + xcord + "-" + ycord + "-");
                     pieces.add(knightPiece1);
                     break;
                 case 7:
-                    Rook rookPiece1 = new Rook(row, y, "--" + color + "-rk2-" + xcord + "-" + ycord + "-", isWhite);
-                    setPieceOnSquare(rookPiece1,row,y);
+                    Rook rookPiece1 = new Rook(y, row, "--" + color + "-rk2-" + xcord + "-" + ycord + "-", isWhite);
+                    setPieceOnSquare(rookPiece1,y, row);
                     //rookPiece1.setName("--" + color + "-rk2-" + xcord + "-" + ycord + "-");
                     pieces.add(rookPiece1);
                     break;
@@ -341,85 +348,87 @@ public class Board implements Serializable {
     //sets blank rows at the beginning of the game
     public void setBlanks(int row){
 
+        int ycord = row+1;
         char xcord = 0;
-        char ycord = 0;
 
-        if (row == 0)
+        /*
+        if (row == 0)								// TYANG row = number
         {
-            xcord = 'A';
+            ycord = 'A';
         }
         if (row == 1)
         {
-            xcord = 'B';
+            ycord = 'B';
         }
         if (row == 2)
         {
-            xcord = 'C';
+            ycord = 'C';
         }
         if (row == 3)
         {
-            xcord = 'D';
+            ycord = 'D';
         }
         if (row == 4)
         {
-            xcord = 'E';
+            ycord = 'E';
         }
         if (row == 5)
         {
-            xcord = 'F';
+            ycord = 'F';
         }
         if (row == 6)
         {
-            xcord = 'G';
+            ycord = 'G';
         }
         if (row == 7)
         {
-            xcord = 'H';
+            ycord = 'H';
         }
+         */
+        for(int y = 0; y <=7; y++){                                                     // TYANG increases from 0
 
-        for(int y = 0; y < 8; y++) {
 
-
-            if (y == 0)
+            if (y == 0)                                                                 // Collumns = letters not numbers
             {
-                ycord = '8';
+                xcord = 'A';
             }
             if (y == 1)
             {
-                ycord = '7';
+                xcord = 'B';
             }
             if (y == 2)
             {
-                ycord = '6';
+                xcord = 'C';
             }
             if (y == 3)
             {
-                ycord = '5';
+                xcord = 'D';
             }
             if (y == 4)
             {
-                ycord = '4';
+                xcord = 'E';
             }
             if (y == 5)
             {
-                ycord = '3';
+                xcord = 'F';
             }
             if (y == 6)
             {
-                ycord = '2';
+                xcord = 'G';
             }
             if (y == 7)
             {
-                ycord = '1';
+                xcord = 'H';
             }
 
 
-            //makes empty piece object
-            Piece emptyPiece = new Piece();
-            //calls set function to pass empty piece and coordinates
-            setPieceOnSquare(emptyPiece, row, y);
+            //makes empty piece object                                                              // TYANG piece coord =
+            Piece emptyPiece = new Piece(y, row,"____" + xcord + "--" + ycord + "____",false);
+            //calls set function to pass empty piece and coordinates                            // can't be entirely null
+            setPieceOnSquare(emptyPiece, y, row);                                               // since getName() is used to show board
             //sets the "blank" value of the empty piece
-            //emptyPiece.setName("____" + xcord + "--" + ycord + "____");
+            //emptyPiece.setName("____" + ycord + "--" + xcord + "____");
+            emptyPiece.setIsAlive(false);
         }
     }
 
@@ -427,31 +436,24 @@ public class Board implements Serializable {
         int x = 0;
         int y = 0;
 
-
-
-
-
-
-
-
         return x + y;
     }
 
 
     //sets piece on square
-    public void setPieceOnSquare(Piece piece, int x, int y) {
+    public void setPieceOnSquare(Piece piece, int x, int y) {           //TYNAG just understand where the piece is being placed
         //gets passed the piece and coordinates
         //then sets the the piece at the specific coordinate
-        squares[x][y].setPiece(piece);
+        squares[x][y].setPiece(piece);                                  //
     }
 
 
     //remove pieces from board
     public void removePieceOnSpace(int x, int y){
 
-
-        char xcord = 0;
-        char ycord = 0;
+                                                                            //TYANG remove pieces worked since
+        char xcord = 0;                                                     // row wasn't confused
+        int ycord = y+1;
 
         if (x == 0)
         {
@@ -485,47 +487,16 @@ public class Board implements Serializable {
         {
             xcord = 'H';
         }
-
-        if (y == 0)
-        {
-            ycord = '1';
-        }
-        if (y == 1)
-        {
-            ycord = '2';
-        }
-        if (y == 2)
-        {
-            ycord = '3';
-        }
-        if (y == 3)
-        {
-            ycord = '4';
-        }
-        if (y == 4)
-        {
-            ycord = '5';
-        }
-        if (y == 5)
-        {
-            ycord = '6';
-        }
-        if (y == 6)
-        {
-            ycord = '7';
-        }
-        if (y == 7)
-        {
-            ycord = '8';
-        }
-
+                                                            // TYANG issue resolved, reverted modified code
         try {
             //gets passed coordinates to tell what square to remove piece from
             //makes new piece object
-            Piece emptyPiece = new Piece();
-            //sets the object as blank instead of as a piece
-            emptyPiece.setName("__" + xcord + "-" + ycord + "__");
-            //sets the blank object to the specific square
+            Piece emptyPiece = new Piece(x,y,"____" + xcord + "--" + ycord + "____",false);
+            //calls set function to pass empty piece and coordinates                         // TYANG can't be entirely null
+            setPieceOnSquare(emptyPiece,x, y);
+            //sets the "blank" value of the empty piece
+            //emptyPiece.setName("____" + xcord + "--" + ycord + "____");
+            emptyPiece.setIsAlive(false);
             squares[x][y].setPiece(emptyPiece);
         } catch(ArrayIndexOutOfBoundsException e){
 
@@ -537,22 +508,26 @@ public class Board implements Serializable {
 
 
         ArrayList<Piece> tempList = new ArrayList<>();
-        for(int x=0; x<8; x++){
-            for(int y = 0; y<8; y++){
+        for(int y=7; y>=0; y--){                                                             //TYANG (0,7) start
+            for(int x = 0; x<=7; x++){
                 //displays the square in each column
                 //System.out.print(squares[x][y].getPiece().getName());
 
 
 
                 System.out.print(squares[x][y].getPiece().getName());
-                if (squares[x][y].getPiece().getAlive() == true) {
-                    tempList.add(squares[x][y].getPiece());
+                if (squares[x][y].getPiece().getAlive() == true) {                // Need to declare what "piece"
+                    tempList.add(squares[x][y].getPiece());                       // Can't directly access isAlive -> use piece.getAlive()
                 }
             }
             //displays the square in each row
             //starts displaying a  new row of squares once
             // all previous squares were displayed in the previous row
             System.out.println();
+
+
+            Piece piece = new Piece();                                          //TYANG NEED MANUAL RANGE UPDATE
+            piece.updateRange(tempList);
         }
         return tempList;
     }
@@ -607,5 +582,6 @@ public class Board implements Serializable {
 
 
 
-
 }
+
+

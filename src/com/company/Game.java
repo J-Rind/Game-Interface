@@ -157,22 +157,21 @@ public class Game {
 
     private void gameLoop(){
         int turn = 0;
-        ArrayList<Piece> currentPieces = new ArrayList<Piece>();
         ArrayList<Piece> playerPieces = new ArrayList<Piece>();
         Board mBoard = new Board();
         Input whitePlayerInput = new Input(this.playerWhite);
         Input blackPlayerInput = new Input(this.playerBlack);
 
-        King whiteplayerking = new King(0, 0, "King", true);
-        King blackplayerking = new King(0, 0, "King", true);
+        King whiteplayerking = new King(0, 0, "kg", true);
+        King blackplayerking = new King(0, 0, "kg", false);
 
-        // Loop to get current position of kings s
+        // Loop to get current position of kings
         for(Square[] p : mBoard.squares) {
             for(int i = 0; i < 8; i++){
                 try {
-                    if(p[i].getPiece().getName().contains("King") && p[i].getPiece().getColor())
+                    if(p[i].getPiece().getName().contains("kg") && p[i].getPiece().getColor())
                         whiteplayerking = (King) p[i].getPiece();
-                    else if(p[i].getPiece().getName().contains("King") && !(p[i].getPiece().getColor()))
+                    else if(p[i].getPiece().getName().contains("kg") && !(p[i].getPiece().getColor()))
                         blackplayerking = (King) p[i].getPiece();
 
                 
@@ -183,13 +182,12 @@ public class Game {
             }
 
         }
-        playerPieces.addAll(mBoard.blackPiece);
-        playerPieces.addAll(mBoard.whitePiece);
+
 
 
         while(!playerWhite.isWon() && !playerBlack.isWon()){
             // Prints the board
-            currentPieces = mBoard.showBoard();
+            playerPieces = mBoard.showBoard();
             // If turn is even, white's turn.
             if(turn % 2 == 0){
                 whitePlayerInput.getInput(playerPieces,mBoard,whiteplayerking);
@@ -197,7 +195,7 @@ public class Game {
             }
             else{
                 blackPlayerInput.getInput(playerPieces,mBoard,blackplayerking);
-                blackPlayerInput.updateBoard(playerPieces, mBoard, whiteplayerking);
+                blackPlayerInput.updateBoard(playerPieces, mBoard, blackplayerking);
 
             }
 
