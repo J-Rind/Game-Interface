@@ -1,11 +1,13 @@
 package com.company;
 
+import java.beans.XMLEncoder;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
+import java.io.*;
 
-public class gameSaver {
-    public static void write(saveGame saveGame, Player player) {
-        String fileName = player + LocalDateTime.now().toString() + ".xml";
+public class GameSaver {
+    public static void saveGame(SaveGame saveGame, Player player) {
+        String fileName = player + "-" + LocalDateTime.now().toString() + ".xml";
         try {
             XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(fileName)));
             encoder.writeObject(saveGame);

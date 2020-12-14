@@ -9,6 +9,7 @@ public class Game {
     private GameState state;
     private Player playerWhite;
     private Player playerBlack;
+    private SavedGame savedGame;
 
     private Scanner scanner = new Scanner(System.in);
 
@@ -51,8 +52,6 @@ public class Game {
     // Startup functions
     private void initializeGame() {
         printStartupMessages();
-        // TODO: Init the pieces
-        // TODO: Render the board
         state = GameState.MENU;
     }
 
@@ -110,15 +109,11 @@ public class Game {
 
     // Playing functions
     private void startPlayingGame() {
-        initializePlayers();
-        welcomePlayers();
         state = GameState.PLAYING;
-
         System.out.println("Beginning play state (control+c to stop)");
     }
 
     private void initializePlayers() {
-        // TODO: Create new players or load from a file
         System.out.println("Player 1, please enter your name:");
         String playerWhiteName = getPlayerName();
         this.playerWhite = new Player(true, playerWhiteName);
@@ -138,6 +133,8 @@ public class Game {
 
     // New game
     private void newGame() {
+        initializePlayers();
+        welcomePlayers();
         startPlayingGame();
     }
 
@@ -160,8 +157,8 @@ public class Game {
     private void gameLoop(){
         int turn = 0;
         ArrayList<Piece> currentPieces = new ArrayList<Piece>();
-        ArrayList<Piece> playerPieces = new ArrayList<Piece>();
-        Board mBoard = new Board();
+        ArrayList<Piece> playerPieces = this.savedGame.getPieces();
+        Board mBoard = this.savedGame.getBoard();
         Input whitePlayerInput = new Input(this.playerWhite);
         Input blackPlayerInput = new Input(this.playerBlack);
 
@@ -188,19 +185,19 @@ public class Game {
         playerPieces.addAll(mBoard.blackPiece);
         playerPieces.addAll(mBoard.whitePiece);
 
+        playGame(currentPieces, playerPieces, mBoard, whitePlayerInput, blackPlayerInput, whiteplayerking, blackplayerking);
+    }
 
+    private void playGame(ArrayList<Piece> currentPieces, ArrayList<Piece> playerPieces, Board mBoard, Input whitePlayerInput, Input blackPlayerInput, King whiteplayerking, King blackplayerking) {
         while(!playerWhite.isWon() && !playerBlack.isWon()){
             // Prints the board
             currentPieces = mBoard.showBoard();
             // If turn is even, white's turn.
             if(turn % 2 == 0){
-                whitePlayerInput.getInput(playerPieces,mBoard,whiteplayerking);
-                whitePlayerInput.updateBoard(playerPieces, mBoard, whiteplayerking);
+                takeTurn(whitePlayerInput, this.whitePlayer, playerPieces, mBoard, whiteplayerking);
             }
             else{
-                blackPlayerInput.getInput(playerPieces,mBoard,blackplayerking);
-                blackPlayerInput.updateBoard(playerPieces, mBoard, whiteplayerking);
-
+                takeTurn(blackPlayerInput, this.blackPlayer, playerPieces, mBoard,blackplayerking);
             }
 
             if(turn == 10)
@@ -208,5 +205,23 @@ public class Game {
             turn++;
         }
         state = GameState.STOPPED;
+    }
+
+    private void takeTurn(Input playerInput, Player player, ArrayList<Piece> playerPieces, Board mBoard, King king) {
+        String input  = playerInput.getInput(playerPieces,mBoard,king);
+        if (input.equals("save")) {
+            SavedGame savedGame = new SavedGame(mBoard, this.whitePlayer, this.blackPlayer, playerPieces);
+            GameSaver.saveGame(savedGame, this.player.getName());
+        } else {
+            playerInput.updateBoard(playerPieces, mBoard, king);
+        }
+    }
+
+    private boolean isCheckMate(King white, King black, ArrayList<Piece> pieces) {
+        if(white.kingCheck(pieces))
+            return true;
+        if(black.kingCheck(pieces))
+            return true;  
+        return false;  
     }
 }

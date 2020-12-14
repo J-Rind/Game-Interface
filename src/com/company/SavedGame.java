@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 
-public class saveGame {
+public class SavedGame {
     private Board board;
     private Player whitePlayer;
     private Player blackPlayer;
@@ -24,7 +24,7 @@ public class saveGame {
         return pieces;
     }
 
-    public saveGame(Board board, Player whitePlayer, Player blackPlayer, ArrayList<Piece> pieces){
+    public savedGame(Board board, Player whitePlayer, Player blackPlayer, ArrayList<Piece> pieces){
         this.board = board;
         this.whitePlayer = whitePlayer;
         this.blackPlayer = blackPlayer;

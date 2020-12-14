@@ -42,6 +42,10 @@ public class Input {
     
 
     public boolean validInput(String input) {
+        if (input.equals("save")) {
+            return true;
+        }
+
         //testing if length of input is not equal to 4 (should be coord 1 then coord 2, aka e2e4 a2c3, etc), OR if the letters are not between a and h, OR if the numbers are not between 1 and 8
         if (input.length() != 4){
             System.out.print("\nInvalid Input\n\n");

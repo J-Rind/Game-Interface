@@ -1,36 +1,18 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.beans.XMLDecoder;
+import java.io.*;
 
 public class GameLoader {
-    private Board board;
-    private Player whitePlayer;
-    private Player blackPlayer;
-    private ArrayList<Piece> pieces;
-
-    public GameLoader() { }
-
-    public void loadGameFromFile(String path) {
+    public static SavedGame loadGameFromFile(String fileName) {
         try {
-
+            XmlDecoder decoder = new XmlDecoder(new BufferedInputStream(new FileInputStream(fileName)));
+            SavedGame savedGame = (SavedGame) decoder.readObject();
+            decoder.close();
+            return savedGame;
         } catch(Exception ex) {
-
+            System.out.println("An error occurred while reading this file!");
         }
-    }
-
-    public Board getBoard() {
-        return board;
-    }
-
-    public Player getWhitePlayer() {
-        return whitePlayer;
-    }
-
-    public Player getBlackPlayer() {
-        return blackPlayer;
-    }
-
-    public ArrayList<Piece> getPieces() {
-        return pieces;
     }
 }

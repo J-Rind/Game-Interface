@@ -534,16 +534,11 @@ public class Board implements Serializable {
 
     //Display the board
     public ArrayList<Piece> showBoard(){
-
-
         ArrayList<Piece> tempList = new ArrayList<>();
         for(int x=0; x<8; x++){
             for(int y = 0; y<8; y++){
                 //displays the square in each column
                 //System.out.print(squares[x][y].getPiece().getName());
-
-
-
                 System.out.print(squares[x][y].getPiece().getName());
                 if (squares[x][y].getPiece().getAlive() == true) {
                     tempList.add(squares[x][y].getPiece());
