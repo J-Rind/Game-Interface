@@ -133,8 +133,26 @@ public class Input {
 
         Piece myPiece = new Piece();
         myPiece = board.squares[xCoordOne][yCoordOne].getPiece();
-        myPiece.moveTo(xCoordTwo, yCoordTwo, myKing, arr);
-        board.setPieceOnSquare(myPiece, xCoordTwo, yCoordTwo);
-        board.removePieceOnSpace(xCoordOne, yCoordOne);
-    } 
+        // Check to see if a piece is there and if it should be taken or not
+        if (checkForPieceOnSquare(board, myPiece, xCoordTwo, yCoordTwo)) {
+            myPiece.moveTo(xCoordTwo, yCoordTwo, myKing, arr);
+            board.setPieceOnSquare(myPiece, xCoordTwo, yCoordTwo);
+        }
+    }
+
+    public boolean checkForPieceOnSquare(Board board, Piece piece, int xCoord, int yCoord){
+        Piece tempPiece = board.getSquares()[xCoord][yCoord].getPiece(); // temp variables for checking if there is a piece on the square
+        // getPiece returns a 1 for white, a 2 for black, and a 0 for empty piece
+        // if piece your piece is white, and the piece on square is white then error message
+        // if your piece is the opposite color of the piece on the square, move your piece and take enemy piece
+        if (piece.getColor() == tempPiece.getColor()){
+            System.out.println("You cannot move there, that is your piece.");
+            return false;
+        }
+        if (!tempPiece.getName().equals("__" + xCoord + "-" + yCoord + "__")){
+            board.removePieceOnSpace(xCoord,yCoord);
+            tempPiece.setIsAlive(false);
+        }
+        return true;
+    }
 }
