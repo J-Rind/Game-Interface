@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class Board implements Serializable {
     //2D array to make the 8 by 8 grid of the board
-    Square[][] squares = new Square [8][8];
+    Square [][] squares = new Square [8][8];
 
     //arraylist to store the black pieces
     ArrayList<Piece> blackPiece = new ArrayList<>();
@@ -184,8 +184,10 @@ public class Board implements Serializable {
                 ycord = '1';
             }
 
+
+
             //make piece object
-            Pawn pawnPiece = new Pawn(row, y, "--" + color + "-pw1-" + xcord + "-" + ycord + "-", isWhite);
+            Pawn pawnPiece = new Pawn(row, y, "-" + color + "-pawn-" + xcord + "-" + ycord + "-", isWhite);
             //calls function and passes piece object with coordinates
             setPieceOnSquare(pawnPiece,row,y);
             //passes color and coordinates
@@ -282,7 +284,7 @@ public class Board implements Serializable {
             switch(y){
                 case 0:
                     // creates piece object
-                    Rook rookPiece = new Rook(row, y, "--" + color + "-rk1-" + xcord + "-" + ycord + "-", isWhite);
+                    Rook rookPiece = new Rook(row, y, "-" + color + "-rk-1-" + xcord + "-" + ycord + "-", isWhite);
                     // calls function to set piece on the square while passing the object and coordinate
                     setPieceOnSquare(rookPiece,row,y);
                     //keeps track of pieces in arraylist
@@ -291,43 +293,43 @@ public class Board implements Serializable {
 
                 //other cases do the same as this case, but for their respective pieces based on where they should be on the board
                 case 1:
-                    Knight knightPiece = new Knight(row, y, "--" + color + "-kn1-" + xcord + "-" + ycord + "-", isWhite);
+                    Knight knightPiece = new Knight(row, y, "-" + color + "-kn-1-" + xcord + "-" + ycord + "-", isWhite);
                     setPieceOnSquare(knightPiece,row,y);
                     //knightPiece.setName("--" + color + "-kn1-" + xcord + "-" + ycord + "-");
                     pieces.add(knightPiece);
                     break;
                 case 2:
-                    Bishop bishopPiece = new Bishop(row, y, "--" + color + "-bi1-" + xcord + "-" + ycord + "-", isWhite);
+                    Bishop bishopPiece = new Bishop(row, y, "-" + color + "-bi-1-" + xcord + "-" + ycord + "-", isWhite);
                     setPieceOnSquare(bishopPiece,row,y);
                     //bishopPiece.setName("--" + color + "-bi1-" + xcord + "-" + ycord + "-");
                     pieces.add(bishopPiece);
                     break;
                 case 3:
-                    Queen queenPiece = new Queen(row, y, "--" + color + "-qu1-" + xcord + "-" + ycord + "-", isWhite);
+                    Queen queenPiece = new Queen(row, y, "-" + color + "-qu-1-" + xcord + "-" + ycord + "-", isWhite);
                     setPieceOnSquare(queenPiece,row,y);
                     //queenPiece.setName("--" + color + "-qu1-" + xcord + "-" + ycord + "-");
                     pieces.add(queenPiece);
                     break;
                 case 4:
-                    King kingPiece = new King(row, y, "--" + color + "-kg1-" + xcord + "-" + ycord + "-" , isWhite);
+                    King kingPiece = new King(row, y, "-" + color + "-kg-1-" + xcord + "-" + ycord + "-" , isWhite);
                     setPieceOnSquare(kingPiece,row,y);
                     //kingPiece.setName("--" + color + "-kg1-" + xcord + "-" + ycord + "-");
                     pieces.add(kingPiece);
                     break;
                 case 5:
-                    Bishop bishopPiece1 = new Bishop(row, y, "--" + color + "-bi2-" + xcord + "-" + ycord + "-", isWhite);
+                    Bishop bishopPiece1 = new Bishop(row, y, "-" + color + "-bi-2-" + xcord + "-" + ycord + "-", isWhite);
                     setPieceOnSquare(bishopPiece1,row,y);
                     //bishopPiece1.setName("--" + color + "-bi2-" + xcord + "-" + ycord + "-");
                     pieces.add(bishopPiece1);
                     break;
                 case 6:
-                    Knight knightPiece1 = new Knight(row, y, "--" + color + "-kn2-" + xcord + "-" + ycord + "-", isWhite);
+                    Knight knightPiece1 = new Knight(row, y, "-" + color + "-kn-2-" + xcord + "-" + ycord + "-", isWhite);
                     setPieceOnSquare(knightPiece1,row,y);
                     //knightPiece1.setName("--" + color + "-kn2-" + xcord + "-" + ycord + "-");
                     pieces.add(knightPiece1);
                     break;
                 case 7:
-                    Rook rookPiece1 = new Rook(row, y, "--" + color + "-rk2-" + xcord + "-" + ycord + "-", isWhite);
+                    Rook rookPiece1 = new Rook(row, y, "-" + color + "-rk-2-" + xcord + "-" + ycord + "-", isWhite);
                     setPieceOnSquare(rookPiece1,row,y);
                     //rookPiece1.setName("--" + color + "-rk2-" + xcord + "-" + ycord + "-");
                     pieces.add(rookPiece1);
@@ -413,11 +415,12 @@ public class Board implements Serializable {
                 ycord = '1';
             }
 
-
             //makes empty piece object
             Piece emptyPiece = new Piece();
             //calls set function to pass empty piece and coordinates
+            emptyPiece.setName("____" + xcord + "--" + ycord + "____");
             setPieceOnSquare(emptyPiece, row, y);
+            emptyPiece.setIsAlive(false);
             //sets the "blank" value of the empty piece
             //emptyPiece.setName("____" + xcord + "--" + ycord + "____");
         }
@@ -440,9 +443,13 @@ public class Board implements Serializable {
 
     //sets piece on square
     public void setPieceOnSquare(Piece piece, int x, int y) {
-        //gets passed the piece and coordinates
-        //then sets the the piece at the specific coordinate
-        squares[x][y].setPiece(piece);
+        try {
+            //gets passed the piece and coordinates
+            //then sets the the piece at the specific coordinate
+            squares[x][y].setPiece(piece);
+        } catch(Exception ex){
+            System.out.println(ex);
+        }
     }
 
 
@@ -527,18 +534,23 @@ public class Board implements Serializable {
             emptyPiece.setName("__" + xcord + "-" + ycord + "__");
             //sets the blank object to the specific square
             squares[x][y].setPiece(emptyPiece);
-        } catch(ArrayIndexOutOfBoundsException e){
-
+        } catch(Exception ex){
+            System.out.println(ex);
         }
     }
 
     //Display the board
     public ArrayList<Piece> showBoard(){
+
+
         ArrayList<Piece> tempList = new ArrayList<>();
         for(int x=0; x<8; x++){
             for(int y = 0; y<8; y++){
                 //displays the square in each column
                 //System.out.print(squares[x][y].getPiece().getName());
+
+
+
                 System.out.print(squares[x][y].getPiece().getName());
                 if (squares[x][y].getPiece().getAlive() == true) {
                     tempList.add(squares[x][y].getPiece());
@@ -599,6 +611,7 @@ public class Board implements Serializable {
         }
 
     }
+
 
 
 

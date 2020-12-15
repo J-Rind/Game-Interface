@@ -64,6 +64,10 @@ public class Input {
     }
 
     public boolean isValidMove(ArrayList<Piece> arr, Board board, String input, King myKing){
+        if (input.equals("save")) {
+            return true;
+        }
+
         int[] inverseBoard = new int[]{7,6,5,4,3,2,1,0};
 
         System.out.println(input);

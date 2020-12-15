@@ -8,8 +8,7 @@ public class Square {
     int x;
     int y;
 
-    public Square(){
-    }
+
     public Piece getPiece(){            //Will return what piece is in the square
         return piece;
     }
@@ -43,12 +42,13 @@ public class Square {
         this.y = y;                     //shouldn't be needed if square was constructed properly
     }
 
+    public Square(){
+    }
+
     public Square(Piece piece, String color, int x, int y){
         this.piece = piece;
         this.color = color;
         this.x = x;
         this.y = y;
     }
-
-
 }
