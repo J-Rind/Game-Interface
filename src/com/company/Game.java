@@ -9,6 +9,7 @@ public class Game {
     private GameState state;
     private Player playerWhite;
     private Player playerBlack;
+    private SavedGame savedGame;
 
     private Scanner scanner = new Scanner(System.in);
 
@@ -108,15 +109,11 @@ public class Game {
 
     // Playing functions
     private void startPlayingGame() {
-        initializePlayers();
-        welcomePlayers();
         state = GameState.PLAYING;
-
         System.out.println("Beginning play state (control+c to stop)");
     }
 
     private void initializePlayers() {
-        // TODO: Create new players or load from a file
         System.out.println("Player 1, please enter your name:");
         String playerWhiteName = getPlayerName();
         this.playerWhite = new Player(true, playerWhiteName);
@@ -136,12 +133,36 @@ public class Game {
 
     // New game
     private void newGame() {
+        initializePlayers();
+        welcomePlayers();
+        this.savedGame = new SavedGame(
+            new Board(),
+            0,
+            this.playerWhite,
+            this.playerBlack,
+                new King(0, 0, "King", true),
+                new King(0, 0, "King", true),
+            new ArrayList<Piece>()
+        );
         startPlayingGame();
     }
 
     // Load game
     private void loadGame() {
-        System.out.println("This loads the game");
+        System.out.println("Please enter the game of the saved game:");
+        String fileName = scanner.nextLine();
+        System.out.println("Loading game...");
+        this.savedGame = GameLoader.loadGameFromFile(fileName);
+        this.playerWhite = this.savedGame.getWhitePlayer();
+        this.playerBlack = this.savedGame.getBlackPlayer();
+        System.out.println("Welcome back, " + this.playerWhite.getName() + " and " + this.playerBlack.getName() + "!" );
+
+        if (this.savedGame.getTurn() % 2 == 0) {
+            System.out.println("It is currently " + this.playerWhite.getName() + "'s turn!");
+        } else {
+            System.out.println("It is currently " + this.playerBlack.getName() + "'s turn!");
+        }
+        startPlayingGame();
     }
 
     // Stop functions
@@ -158,22 +179,22 @@ public class Game {
     private void gameLoop(){
         int turn = 0;
         ArrayList<Piece> currentPieces = new ArrayList<Piece>();
-        ArrayList<Piece> playerPieces = new ArrayList<Piece>();
-        Board mBoard = new Board();
+        ArrayList<Piece> playerPieces = this.savedGame.getPieces();
+        Board mBoard = this.savedGame.getBoard();
         Input whitePlayerInput = new Input(this.playerWhite);
         Input blackPlayerInput = new Input(this.playerBlack);
 
-        King whiteplayerking = new King(0, 0, "King", true);
-        King blackplayerking = new King(0, 0, "King", true);
+        King whitePlayerKing = this.savedGame.getWhiteKing();
+        King blackPlayerKing = this.savedGame.getBlackKing();
 
         // Loop to get current position of kings s
         for(Square[] p : mBoard.squares) {
             for(int i = 0; i < 8; i++){
                 try {
                     if(p[i].getPiece().getName().contains("King") && p[i].getPiece().getColor())
-                        whiteplayerking = (King) p[i].getPiece();
+                        whitePlayerKing = (King) p[i].getPiece();
                     else if(p[i].getPiece().getName().contains("King") && !(p[i].getPiece().getColor()))
-                        blackplayerking = (King) p[i].getPiece();
+                        blackPlayerKing = (King) p[i].getPiece();
 
                 
                 } catch (Exception e) {
@@ -186,25 +207,47 @@ public class Game {
         playerPieces.addAll(mBoard.blackPiece);
         playerPieces.addAll(mBoard.whitePiece);
 
+        playGame(currentPieces, playerPieces, turn, mBoard, whitePlayerInput, blackPlayerInput, whitePlayerKing, blackPlayerKing);
+    }
 
+    private void playGame(ArrayList<Piece> currentPieces, ArrayList<Piece> playerPieces, int turn, Board mBoard, Input whitePlayerInput, Input blackPlayerInput, King whitePlayerKing, King blackPlayerKing) {
         while(!playerWhite.isWon() && !playerBlack.isWon()){
             // Prints the board
             currentPieces = mBoard.showBoard();
             // If turn is even, white's turn.
             if(turn % 2 == 0){
-                whitePlayerInput.getInput(playerPieces,mBoard,whiteplayerking);
-                whitePlayerInput.updateBoard(playerPieces, mBoard, whiteplayerking);
+                takeTurn(whitePlayerInput, turn, this.playerWhite, playerPieces, mBoard, whitePlayerKing, whitePlayerKing, blackPlayerKing);
             }
             else{
-                blackPlayerInput.getInput(playerPieces,mBoard,blackplayerking);
-                blackPlayerInput.updateBoard(playerPieces, mBoard, whiteplayerking);
-
+                takeTurn(blackPlayerInput, turn, this.playerBlack, playerPieces, mBoard, blackPlayerKing, whitePlayerKing, blackPlayerKing);
             }
 
-            if(turn == 10)
+            GameWinCondition winCondition = isCheckMate(whitePlayerKing, blackPlayerKing, playerPieces);
+
+            if (winCondition == GameWinCondition.WHITE)
                 playerWhite.setWon(true);
-            turn++;
+            else if (winCondition == GameWinCondition.BLACK)
+                playerBlack.setWon(true);
         }
         state = GameState.STOPPED;
+    }
+
+    private void takeTurn(Input playerInput, int turn, Player player, ArrayList<Piece> playerPieces, Board mBoard, King king, King whiteplayerking, King blackplayerking) {
+        String input  = playerInput.getInput(playerPieces,mBoard,king);
+        if (input.equals("save")) {
+            SavedGame savedGame = new SavedGame(mBoard, turn, this.playerWhite, this.playerBlack, whiteplayerking, blackplayerking, playerPieces);
+            GameSaver.saveGame(savedGame, player);
+        } else {
+            playerInput.updateBoard(playerPieces, mBoard, king);
+        }
+    }
+
+    private GameWinCondition isCheckMate(King white, King black, ArrayList<Piece> pieces) {
+        if(white.kingCheck(pieces))
+            return GameWinCondition.WHITE;
+        else if(black.kingCheck(pieces))
+            return GameWinCondition.BLACK;
+        else  
+            return GameWinCondition.NONE;
     }
 }
