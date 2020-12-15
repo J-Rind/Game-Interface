@@ -178,42 +178,40 @@ public class Game {
 
     private void gameLoop(){
         int turn = 0;
-        ArrayList<Piece> currentPieces = new ArrayList<Piece>();
         ArrayList<Piece> playerPieces = this.savedGame.getPieces();
         Board mBoard = this.savedGame.getBoard();
         Input whitePlayerInput = new Input(this.playerWhite);
         Input blackPlayerInput = new Input(this.playerBlack);
 
-        King whitePlayerKing = this.savedGame.getWhiteKing();
-        King blackPlayerKing = this.savedGame.getBlackKing();
+        King whitePlayerKing = findKing(playerWhite, mBoard);
+        King blackPlayerKing = findKing(playerBlack, mBoard);
 
-        // Loop to get current position of kings s
-        for(Square[] p : mBoard.squares) {
-            for(int i = 0; i < 8; i++){
-                try {
-                    if(p[i].getPiece().getName().contains("King") && p[i].getPiece().getColor())
-                        whitePlayerKing = (King) p[i].getPiece();
-                    else if(p[i].getPiece().getName().contains("King") && !(p[i].getPiece().getColor()))
-                        blackPlayerKing = (King) p[i].getPiece();
-
-                
-                } catch (Exception e) {
-                    //System.out.println("test");
-                }
-                
-            }
-
-        }
         playerPieces.addAll(mBoard.blackPiece);
         playerPieces.addAll(mBoard.whitePiece);
 
-        playGame(currentPieces, playerPieces, turn, mBoard, whitePlayerInput, blackPlayerInput, whitePlayerKing, blackPlayerKing);
+        playGame(playerPieces, turn, mBoard, whitePlayerInput, blackPlayerInput, whitePlayerKing, blackPlayerKing);
     }
 
-    private void playGame(ArrayList<Piece> currentPieces, ArrayList<Piece> playerPieces, int turn, Board mBoard, Input whitePlayerInput, Input blackPlayerInput, King whitePlayerKing, King blackPlayerKing) {
+    private King findKing(Player player, Board mBoard){
+        King myKing = new King(0,0,"kg",false);
+        // Loop to get current position of kings
+        for(Square[] p : mBoard.squares) {
+            for(int i = 0; i < 8; i++){
+                try {
+                    if(p[i].getPiece().getName().contains("kg") && p[i].getPiece().getColor() == player.getIsWhite())
+                        myKing = (King) p[i].getPiece();
+                } catch (Exception e) {
+                    //System.out.println("Null");
+                }
+            }
+        }
+        return myKing;
+    }
+
+    private void playGame(ArrayList<Piece> playerPieces, int turn, Board mBoard, Input whitePlayerInput, Input blackPlayerInput, King whitePlayerKing, King blackPlayerKing) {
         while(!playerWhite.isWon() && !playerBlack.isWon()){
             // Prints the board
-            currentPieces = mBoard.showBoard();
+            playerPieces = mBoard.showBoard();
             // If turn is even, white's turn.
             if(turn % 2 == 0){
                 takeTurn(whitePlayerInput, turn, this.playerWhite, playerPieces, mBoard, whitePlayerKing, whitePlayerKing, blackPlayerKing);

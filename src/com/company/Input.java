@@ -118,26 +118,41 @@ public class Input {
     }
 
     public void updateBoard(ArrayList<Piece> arr, Board board, King myKing){
-        int[] inverseBoard = new int[]{7,6,5,4,3,2,1,0};
-        int value1 = input.charAt(0) - 97;
-        int value2 = input.charAt(1) - 49;
-        int value3 = input.charAt(2) - 97;
-        int value4 = input.charAt(3) - 49;
-
         // Initial location of the piece
-        int xCoordOne = inverseBoard[value2];
-        int yCoordOne = value1;
+        int xCoordOne = input.charAt(0) - 97;
+        int yCoordOne = input.charAt(1) - 49;
         // Final location of the piece
-        int xCoordTwo = inverseBoard[value4];
-        int yCoordTwo = value3;
+        int xCoordTwo = input.charAt(2) - 97;
+        int yCoordTwo = input.charAt(3) - 49;
 
+        // Finding the piece
         Piece myPiece = new Piece();
         myPiece = board.squares[xCoordOne][yCoordOne].getPiece();
+
+        // Changing the name of selected piece to update with moved location coordinates
+        String newName = updateName(myPiece);
+        myPiece.setName(newName);
+
         // Check to see if a piece is there and if it should be taken or not
         if (checkForPieceOnSquare(board, myPiece, xCoordTwo, yCoordTwo)) {
             myPiece.moveTo(xCoordTwo, yCoordTwo, myKing, arr);
             board.setPieceOnSquare(myPiece, xCoordTwo, yCoordTwo);
         }
+    }
+
+    public String updateName(Piece myPiece){
+        char[] chararr = new char[12];
+        // --B-rk1-A-8- is the naming style
+        // To change A-8 to desired location remove the last 4 characters and update them
+        for(int i = 0; i < myPiece.getName().length()-4; i++){
+            chararr[i] = myPiece.getName().charAt(i);
+        }
+        chararr[myPiece.getName().length()-4] = (char) (input.charAt(2) - 32);
+        chararr[myPiece.getName().length()-3] = '-';
+        chararr[myPiece.getName().length()-2] = input.charAt(3);
+        chararr[myPiece.getName().length()-1] = '-';
+        String changeString = new String(chararr);
+        return changeString;
     }
 
     public boolean checkForPieceOnSquare(Board board, Piece piece, int xCoord, int yCoord){
